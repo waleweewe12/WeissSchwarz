@@ -1,0 +1,61 @@
+.Field {
+    border-radius:25px;
+    border:1px solid black;
+    margin-bottom:10px;
+    margin-top:10px;
+}
+.Hand {
+    width:80%;
+    margin-left:auto;
+    margin-right:auto;
+    height:5rem;
+    background-color:rgba(255, 255, 255, 0.3);
+    border:1px solid black;
+    border-radius:10px;
+    margin-top:10px;
+    margin-bottom:10px;
+}
+.Stock {
+    width:5rem;
+    height:10rem;
+    background-color:rgba(255, 255, 255, 0.3);
+    border-radius:10px;
+    border:1px solid black;
+    margin-top:10px;
+    margin-left:auto;
+    margin-right:auto;
+    text-align:center;
+    position:relative;
+}
+.TapCard {
+    width:3rem;
+    border:1px solid black;
+    border-radius: 5px;
+    transform: rotate(90deg);
+    position:absolute;
+    right:20%;
+    cursor: pointer;
+    /* top:15%; */
+}
+.UntapCard {
+    width:3rem;
+    border:1px solid black;
+    border-radius: 5px;
+    position:absolute;
+    right:20%;
+    cursor: pointer;
+}
+.Zone {
+    width:5rem;
+    height:6rem;
+    background-color:rgba(255, 255, 255, 0.3);
+    border-radius:10px;
+    border:1px solid black;
+    margin-top:10px;
+    margin-left:auto;
+    margin-right:auto;
+    text-align:center;
+    position:relative;
+}
+
+
