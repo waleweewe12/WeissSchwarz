@@ -1,16 +1,17 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import Child from './Child'
 
 function Root(){
 
-    const [data,Setdata] = useState("")
+    const [data,Setdata] = useState([])
     const HandledataChange = (Childdata)=>{
         Setdata(Childdata)
     }
-
     return(
         <div>
-            {data}
+            {data.map((item,i)=>
+                <div key={i}>{item}</div>
+            )}
             <Child Setdata={HandledataChange}/>
         </div>
     )

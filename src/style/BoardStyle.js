@@ -54,6 +54,9 @@ const style = {
         right:'20%',
         cursor: 'pointer'
     },
+    TapCardLeft :{
+        transform: 'rotate(270deg)'
+    },
     UntapCard :{
         width:'3rem',
         border:'1px solid black',
