@@ -132,10 +132,52 @@ function Board(){
             Setswap('empty_card.jpg')
         }
     }
-    const ReturnToHand = (data)=>{
-       // console.log(data)
-        SetHand(data)
-       // SetWaitingRoom(data.WaitingRoom)
+    const ReturnToHand = (index)=>{
+        index = parseInt(index)
+        let DummyHand = [...Hand]
+        let DummyWaitingRoom = [...WaitingRoom]
+        DummyHand.push(DummyWaitingRoom[index])
+        DummyWaitingRoom.splice(index,1)
+        SetHand(DummyHand)
+        SetWaitingRoom(DummyWaitingRoom)
+    }
+
+    const shuffle = (array,shuffle_array) =>{
+        let n = array.length
+        let r = Math.floor(Math.random() * n)
+        if(n === 0){
+            return shuffle_array
+        }else{
+            shuffle_array.push(array[r])
+            array.splice(r,1)
+            shuffle(array,shuffle_array)
+        }
+    }
+
+    const RefreshWaitingRoom = ()=>{
+        console.log('refresh from Board')
+        let Refresh = [...Deck,...WaitingRoom]
+        let RefreshDeck = []
+        shuffle(Refresh,RefreshDeck)
+        SetDeck(RefreshDeck)
+        SetWaitingRoom([])
+    }
+
+    const ReturnCardInDeckToHand = (index)=>{
+        index = parseInt(index)
+        let DummyDeck = [...Deck]
+        let DummyHand = [...Hand]
+        DummyHand.push(DummyDeck[index])
+        DummyDeck.splice(index,1)
+        SetDeck(DummyDeck)
+        SetHand(DummyHand)
+    }
+
+    const DeckShuffle = ()=>{
+        let DummyDeck = [...Deck]
+        let ShuffleDeck = []
+        shuffle(DummyDeck,ShuffleDeck)
+        SetDeck(ShuffleDeck)
     }
 
     return(
@@ -150,9 +192,8 @@ function Board(){
                             DragDrop={DragDrop} 
                             WaitingRoom ={WaitingRoom}
                             role='opponent'
-                            Hand={Hand}
                             ReturnToHand={ReturnToHand}
-                            SetHand={SetHand}
+                            RefreshWaitingRoom={RefreshWaitingRoom}
                         />
                         <DeckComponent
                             Deck={Deck}
@@ -160,6 +201,9 @@ function Board(){
                             DragOver={DragOver}
                             DragDrop={DragDrop}
                             DragEnd={DragEnd}
+                            role='opponent'
+                            ReturnCardInDeckToHand={ReturnCardInDeckToHand}
+                            DeckShuffle={DeckShuffle}
                         />
                         <MemoryComponent 
                             role='opponent'
@@ -299,15 +343,17 @@ function Board(){
                             DragOver={DragOver}
                             DragDrop={DragDrop}
                             DragEnd={DragEnd}
+                            role='player'
+                            ReturnCardInDeckToHand={ReturnCardInDeckToHand}
+                            DeckShuffle={DeckShuffle}
                         />
                         <WaitingRoomComponent
                             DragOver={DragOver} 
                             DragDrop={DragDrop} 
                             WaitingRoom ={WaitingRoom}
                             role='player'
-                            Hand={Hand}
                             ReturnToHand={ReturnToHand}
-                            SetHand={SetHand}
+                            RefreshWaitingRoom={RefreshWaitingRoom}
                         />
                     </div>
                 </div>           

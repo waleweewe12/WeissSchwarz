@@ -21,6 +21,7 @@ function WaitingRoom(props){
 
     const HandleWaitingRoomInfoClicked = (e)=>{
         SetWaitingRoomInfo(!WaitingRoomInfo)
+        SetWaitingRoomFunction({display:'none'})
     }
 
     const HandleWaitingRoomFunctionClicked = (e)=>{
@@ -35,13 +36,14 @@ function WaitingRoom(props){
     }
     
     const ReturnToHand = (e)=>{
-        let dummyHand = [...props.Hand]
-        let dummyWaitingRoom = [...props.WaitingRoom]
-        dummyHand.push(dummyWaitingRoom[ChooseCard])
-        dummyWaitingRoom.splice(ChooseCard,1)
-      
-        props.SetHand(dummyHand)
-        //console.log(props.Hand)
+        props.ReturnToHand(ChooseCard)
+        SetWaitingRoomFunction({display:'none'})
+    }
+
+    const HandleRefreshClicked = (e)=>{
+        console.log('refresh from waitingroom')
+        props.RefreshWaitingRoom()
+        SetWaitingRoomInfo(false)
     }
 
     return(
@@ -53,9 +55,18 @@ function WaitingRoom(props){
             onDrop={props.DragDrop}
         >
             waiting room
-            <img style={style.UntapCard} src={props.WaitingRoom[(props.WaitingRoom).length - 1]} zone='waitingroom' alt='...' onClick={HandleWaitingRoomInfoClicked}/>
+            {
+                (props.WaitingRoom).length > 0 ?
+                <img style={style.UntapCard} src={props.WaitingRoom[(props.WaitingRoom).length - 1]} zone='waitingroom' alt='...' onClick={HandleWaitingRoomInfoClicked}/> :
+                ''
+            }
             <div style={WaitingRoomInfoStyle}>
-                <button className='btn btn-danger' style={{float:"right"}} onClick={HandleWaitingRoomInfoClicked}>close x</button>
+                <div style={{float:'right'}}>
+                    <button className='btn btn-danger' style={{display:'block',width:'100%'}} onClick={HandleWaitingRoomInfoClicked}>close x</button>
+                    <button className='btn btn-info' style={{display:'block'}} onClick={HandleRefreshClicked}>
+                        Refresh <img src='refresh.svg' style={{width:'10px',height:'10px'}} alt='...'/> 
+                    </button>
+                </div>
                 {props.WaitingRoom.map((item,i)=>
                     <img
                         key={i} 
@@ -74,6 +85,7 @@ function WaitingRoom(props){
                         alt='...'
                     />
                 )}
+                {/* Return to hand */}
                 <div
                     style={WaitingRoomFunction}
                 >

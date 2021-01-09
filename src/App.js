@@ -7,14 +7,8 @@ import CardInfo from './component/CardInfo'
 
 //css
 import './style/AppStyle.css'
-//import FrontRow from './action/FrontRowAction'
 
 function App() {
-
-  // const [test,Settest] = useState("")
-  // const HandleTestClicked = (e)=>{
-  //   Settest('test')
-  // }
 
   return (
     <div className="container-fluid background">
@@ -22,7 +16,6 @@ function App() {
         <CardInfo/>
         <Board/>
       </div>
-      {/* <Root/> */}
     </div>
   )
 }
