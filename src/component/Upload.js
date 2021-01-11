@@ -112,6 +112,7 @@ function Upload() {
                         <select className="form-select" id="series" onChange={HandleseriesSelected}>
                             <option value="Konosuba">Konosuba</option>
                             <option value="Slime">Slime</option>
+                            <option value="Aobuta">Aobuta</option>
                         </select>
                     </div>
                     <div className="mb-3">

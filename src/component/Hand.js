@@ -16,7 +16,7 @@ function Hand(props){
                 index={i} // index of array
                 zone='hand' // type of array
                 style={style.CardStyle}  
-                src={item} 
+                src={props.role === 'player' ? item : 'https://inwfile.com/s-l/z9w722.jpg'} 
                 draggable="true"
                 onDragStart={props.DragStart} 
                 onDragOver={props.DragOver}

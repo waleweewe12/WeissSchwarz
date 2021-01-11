@@ -27,13 +27,15 @@ function Memory(props){
             zone='memory'
         >
             memory
+            { (props.Memory).length === 0 ? '' :
             <img 
                 style={{...style.UntapCard,...{top:"25%"}}} 
                 src={props.Memory[(props.Memory).length - 1]}
                 alt='...'
                 onClick={HandleMemoryInfoClicked}
                 zone='memory'
-            />
+            />  
+            }
             <div style={MemoryInfoStyle}>
                 <button 
                     className='btn btn-danger' 

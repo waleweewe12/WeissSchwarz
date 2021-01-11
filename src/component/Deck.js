@@ -49,7 +49,7 @@ function Deck(props){
         >
             {/* Deck Image */}
             deck
-            {props.Deck.map((item,i)=>
+            {(props.Deck).length > 0 ? props.Deck.map((item,i)=>
                 <img 
                     style={{...style.UntapCard,...{top:"25%"}}} 
                     src='https://inwfile.com/s-l/z9w722.jpg'
@@ -62,7 +62,7 @@ function Deck(props){
                     onDragOver={props.DragOver}
                     onClick={HandleDeckOptionClicked}
                 />    
-            )}
+            ) : ''}
             {/* Deck Option */}
             <div
                 style={
@@ -88,7 +88,8 @@ function Deck(props){
                         zIndex:'2',
                         left:props.role === 'opponent' ? '5rem' : '-31.5rem',
                         top:props.role === 'opponent' ? '0' : '-5rem',
-                        display:ViewDeck ? 'block' : 'none'
+                        display:ViewDeck ? 'block' : 'none',
+                        overflowY:'scroll'
                     }
                 }    
             >
@@ -99,7 +100,7 @@ function Deck(props){
                         }
                     }
                 >
-                    {props.Deck.map((item,i)=>
+                    {props.Deck.length > 0 ? props.Deck.map((item,i)=>
                         <img
                             key={i} 
                             index={i}
@@ -116,7 +117,7 @@ function Deck(props){
                             onClick={HandleCardInDeckOptionClicked}
                             alt='...'
                         />
-                    )}
+                    ) : ''}
                     <button className='btn btn-danger' style={{display:'block',width:'100%'}} onClick={HandleViewDeckClicked}>close x</button>
                 </div>
                 <div

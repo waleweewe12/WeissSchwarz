@@ -1,46 +1,45 @@
 import React from 'react'
 
-function ClimaxZone(props){
-    
-    const ClimaxZoneStyle = {
+function CheckZone(props){
+
+    const CheckZoneStyle = {
         backgroundColor:'rgba(255, 255, 255, 0.5)',
-        width:'6rem',
         border:"1px solid black",
         borderRadius: "5px",
-        marginTop:'10px',
+        width:'80%',
         height:'100%',
-        float:props.role === 'opponent' ? 'right' : 'left',
-        textAlign:'center'
+        textAlign:'center',
+        float:props.role === 'opponent' ? 'none' : 'right'
+    }
+
+    const CardInCheckZone = {
+        width:'2rem',
+        marginLeft:'2px'
     }
 
     return(
         <div className="col-4">
             <div 
-                style={ClimaxZoneStyle}
+                style={CheckZoneStyle} 
                 onDragOver={props.DragOver}
                 onDrop={props.DragDrop}
-                zone='climaxzone'
+                zone='checkzone'
             >
-                climax zone
+                check zone
                 <div
                     style={{
-                        position:'absolute',
-                        marginTop:'-10px',
-                        marginLeft:'20px'
+                        position:'absolute'
                     }}
                 >
                     {
-                    !props.ClimaxZone ? '' :
-                    props.ClimaxZone.map((item,i)=>
+                    !props.CheckZone ? '' :
+                    props.CheckZone.map((item,i)=>
                         <img
-                            zone='climaxzone'
+                            zone='checkzone'
                             key={i} 
                             index={i}
                             src={item}
-                            style={{
-                                width:'3rem',
-                                transform: props.role === 'player' ? 'rotate(270deg)' : 'rotate(90deg)'
-                            }}
+                            style={CardInCheckZone}
                             onDragStart={props.DragStart}
                             onDragEnd={props.DragEnd}
                             onDragOver={props.DragOver}
@@ -48,10 +47,9 @@ function ClimaxZone(props){
                         />
                     )}
                 </div>
-                
             </div>
         </div>
     )
 }
 
-export default ClimaxZone
+export default CheckZone
