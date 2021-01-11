@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 //css
 //import board from '../style/Board.module.css'
 import style from '../style/BoardStyle'
@@ -33,6 +33,10 @@ function Board(){
     const [Memory,SetMemory] = useState(['https://images.littleakiba.com/tcg/card53658-medium.jpg',
         'https://images.littleakiba.com/tcg/card53686-medium.jpg',
         'https://images.littleakiba.com/tcg/card53664-medium.jpg'])
+    
+    useEffect(() => {
+        console.log('Deck update')
+    }, [Deck])
 
     /*Drag-Drop */
     const [src,Setsrc] = useState("empty_card.jpg")
