@@ -2,6 +2,7 @@ import React from 'react'
 import style from '../style/BoardStyle'
 
 function FrontRow(props){
+
     return(
         <div className="row justify-content-center" style={{marginBottom:"10px"}}>
             {props.FrontRow.map((item,i)=><img 

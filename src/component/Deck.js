@@ -60,7 +60,7 @@ function Deck(props){
                     draggable='true'
                     onDragStart={props.DragStart}
                     onDragOver={props.DragOver}
-                    onClick={HandleDeckOptionClicked}
+                    onClick={props.role === 'player' ? HandleDeckOptionClicked : ()=>{}}
                 />    
             ) : ''}
             {/* Deck Option */}

@@ -25,7 +25,7 @@ function App() {
       if(Childdata !== 'butter'){
         deckplayerid = '2e105c7e-feef-49e2-be1f-8232c83cdf97'
       }
-        //load player data
+        //load player deck
       try {
         let playerDeck = await axios.post('http://localhost:5000/weissschwarz-f48e0/us-central1/app/deck/getDeck',{
               DeckId:deckplayerid

@@ -77,7 +77,7 @@ function Board(props){
         const db = firebase.firestore()
         db.collection("board").doc(props.playerName === 'butter' ? "5678" : "1234")
         .onSnapshot(function(doc) {
-            console.log(doc.data())
+            //console.log(doc.data())
             SetOpponentBackRow(doc.data().backrow)
             SetOpponentFrontRow(doc.data().frontrow)
             SetOpponentHand(doc.data().hand)

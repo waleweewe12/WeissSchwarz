@@ -15,7 +15,7 @@ function LogIn(props){
         <div className="row justify-content-center">
             <div className="col-6">
                 <div className="mb-3">
-                    <label for="username" className="form-label">username</label>
+                    <label htmlFor="username" className="form-label">username</label>
                     <input 
                         type="text" 
                         className="form-control" 
@@ -25,7 +25,7 @@ function LogIn(props){
                         onChange={HandleusernameChanged}/>
                 </div>
                 <div className="mb-3">
-                    <label for="password" className="form-label">password</label>
+                    <label htmlFor="password" className="form-label">password</label>
                     <input type="password" className="form-control" id="password" placeholder="Input your password" />
                 </div>
                 <button className="btn btn-primary" onClick={Submit}>Submit</button>

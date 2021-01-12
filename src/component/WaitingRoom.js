@@ -63,7 +63,7 @@ function WaitingRoom(props){
             <div style={WaitingRoomInfoStyle}>
                 <div style={{float:'right'}}>
                     <button className='btn btn-danger' style={{display:'block',width:'100%'}} onClick={HandleWaitingRoomInfoClicked}>close x</button>
-                    <button className='btn btn-info' style={{display:'block'}} onClick={HandleRefreshClicked}>
+                    <button className='btn btn-info' style={{display:props.role === 'player' ? 'block' : 'none'}} onClick={HandleRefreshClicked}>
                         Refresh <img src='refresh.svg' style={{width:'10px',height:'10px'}} alt='...'/> 
                     </button>
                 </div>
