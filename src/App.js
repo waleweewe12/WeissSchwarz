@@ -10,7 +10,7 @@ import axios from 'axios'
 import firebase from './firebase'
 
 //css
-import './style/AppStyle.css'
+import style from './style/AppStyle'
 
 function App() {
 
@@ -29,9 +29,8 @@ function App() {
       SetplayerName(Childdata)
       let deckplayerid = '7ada5f4a-9b4e-4266-86b3-ca4fac938b2a'
 
-      if(Childdata !== 'butter'){
+      if(Childdata !== 'butter')
         deckplayerid = '2e105c7e-feef-49e2-be1f-8232c83cdf97'
-      }
         //load player deck
       try {
         let playerDeck = await axios.post('http://localhost:5000/weissschwarz-f48e0/us-central1/app/deck/getDeck',{
@@ -66,7 +65,6 @@ function App() {
         }
         SetplayerDeck(allcardurl)
         SetplayerCardtext(allcardtext)
-        console.log(allcardtext)
         //update deck in database
         const db = firebase.firestore()
         db.collection("board").doc(Childdata === 'butter' ? "1234" : "5678")
@@ -79,8 +77,8 @@ function App() {
   }
 
   return (
-    <div className="container-fluid background">
-      {(playerName !== "" && playerDeck.length > 0) ?  
+    <div className="container-fluid" style={playerName !== "" ? style.background : style.NotLogin}>
+      {/* {(playerName !== "" && playerDeck.length > 0) ?  
         <div className="row">
           <CardInfo
             image={CardInfoImage}
@@ -93,9 +91,8 @@ function App() {
             HandleCardOver={HandleCardOver}
           />
         </div> : ""
-      }
-      {playerName === "" ? <LogIn SetplayerName={HandleplayerSubmitted}/> : ""}
-    
+      }*/}
+      {playerName === "" ? <LogIn SetplayerName={HandleplayerSubmitted}/> : ""} 
     </div>
   )
 }

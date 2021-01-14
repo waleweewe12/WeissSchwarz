@@ -10,11 +10,10 @@ function LogIn(props){
         e.preventDefault()
         props.SetplayerName(username)
     }
-
     return(
-        <div className="row justify-content-center">
+        <div className="row justify-content-center shadow-lg bg-white rounded">
             <div className="col-6">
-                <div className="mb-3">
+                <div className="mb-3 mt-3">
                     <label htmlFor="username" className="form-label">username</label>
                     <input 
                         type="text" 
@@ -28,7 +27,7 @@ function LogIn(props){
                     <label htmlFor="password" className="form-label">password</label>
                     <input type="password" className="form-control" id="password" placeholder="Input your password" />
                 </div>
-                <button className="btn btn-primary" onClick={Submit}>Submit</button>
+                <button className="btn btn-primary mb-3" onClick={Submit}>Submit</button>
             </div>
         </div>
     )
