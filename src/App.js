@@ -9,11 +9,11 @@ import './style/AppStyle.css'
 function App() {
   return (
     <div className="container-fluid background">
-      {/* <div className="row">
+      <div className="row">
         <CardInfo/>
         <Board/>
-      </div> */}
-      <Root/>
+      </div>
+      {/* <Root/> */}
     </div>
   )
 }
