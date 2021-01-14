@@ -1,20 +1,29 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 
 //css
-import '../style/CardInfo.css'
+import style from '../style/CardInfoStyle'
 
-function CardInfo(){
+function CardInfo(props){
+
+    const [text,Settext] = useState([]) 
     
+    useEffect(()=>{
+        let cardtext = props.text.filter(item=>item.url === props.image)
+        if(cardtext.length > 0)
+            Settext(cardtext[0].text)
+    },[props.text,props.image])
+
     return(
         <div className="col-lg-3 col-md-2 col-sm-12" style={{float:"left"}}>
             {/* card image */}
             <div className="card" style={{width:"16rem"}}>
-                <img src="https://images.littleakiba.com/tcg/card56952-large.jpg" className="card-img-top" alt="..."/>
+                <img src={props.image} className="card-img-top" alt="..."/>
             </div>
             {/* card text */}
-            <div className="mt-3 cardtext">
-                <p>【A】When this card is placed on Stage from Hand, you may place 3 cards from your top Deck into Waiting Room.</p>
-                <p>【A】[(1) Place 1 Climax from Hand into Waiting Room] When this card is placed on Stage from Hand, you may pay the cost. If you did, choose 1 Climax from your Waiting Room, return it to Hand.</p>   
+            <div className="mt-3" style={style.cardtext} >
+                {
+                    text.map((item,i)=><p key={i} style={{padding:'10px'}}>{item}</p>)
+                }
             </div>
         </div>
     )

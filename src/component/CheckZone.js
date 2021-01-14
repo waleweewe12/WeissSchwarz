@@ -7,14 +7,15 @@ function CheckZone(props){
         border:"1px solid black",
         borderRadius: "5px",
         width:'80%',
-        height:'100%',
+        height:'120%',
         textAlign:'center',
         float:props.role === 'opponent' ? 'none' : 'right'
     }
 
     const CardInCheckZone = {
-        width:'2rem',
-        marginLeft:'2px'
+        width:'3rem',
+        marginLeft:'2px',
+        cursor:'pointer'
     }
 
     return(

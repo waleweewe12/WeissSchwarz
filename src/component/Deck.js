@@ -48,7 +48,7 @@ function Deck(props){
             onDragEnd={props.DragEnd}
         >
             {/* Deck Image */}
-            deck
+            deck ({props.Deck.length})
             {(props.Deck).length > 0 ? props.Deck.map((item,i)=>
                 <img 
                     style={{...style.UntapCard,...{top:"25%"}}} 

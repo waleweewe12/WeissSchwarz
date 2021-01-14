@@ -67,7 +67,7 @@ function WaitingRoom(props){
                         Refresh <img src='refresh.svg' style={{width:'10px',height:'10px'}} alt='...'/> 
                     </button>
                 </div>
-                {props.WaitingRoom.map((item,i)=>
+                {props.WaitingRoom.sort().map((item,i)=>
                     <img
                         key={i} 
                         index={i}

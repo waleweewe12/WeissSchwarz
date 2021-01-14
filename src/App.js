@@ -17,6 +17,13 @@ function App() {
   const [playerName,SetplayerName] = useState("")
   const [playerDeck,SetplayerDeck] = useState([])
   const [playerCardtext,SetplayerCardtext] = useState([])
+  const [CardInfoImage,SetCardInfoImage] = useState("https://inwfile.com/s-l/z9w722.jpg")
+  
+  const HandleCardOver = (e)=>{
+    let url = e.target.src
+    if(!url.includes('empty_card.jpg'))
+      SetCardInfoImage(url)  
+  }
  
   const HandleplayerSubmitted = async (Childdata)=>{
       SetplayerName(Childdata)
@@ -59,6 +66,7 @@ function App() {
         }
         SetplayerDeck(allcardurl)
         SetplayerCardtext(allcardtext)
+        console.log(allcardtext)
         //update deck in database
         const db = firebase.firestore()
         db.collection("board").doc(Childdata === 'butter' ? "1234" : "5678")
@@ -74,11 +82,15 @@ function App() {
     <div className="container-fluid background">
       {(playerName !== "" && playerDeck.length > 0) ?  
         <div className="row">
-          <CardInfo/>
+          <CardInfo
+            image={CardInfoImage}
+            text={playerCardtext}
+          />
           <Board 
             playerDeck={playerDeck} 
             playerName={playerName}
             playerCardtext={playerCardtext}
+            HandleCardOver={HandleCardOver}
           />
         </div> : ""
       }

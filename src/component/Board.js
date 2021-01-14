@@ -320,6 +320,7 @@ function Board(props){
                             DragOver={DragOver}
                             DragDrop={DragDrop} 
                             DragEnd={DragEnd}
+                            HandleCardOver={props.HandleCardOver}
                         />
                     </div>
                     {/* stock and level */}
@@ -378,6 +379,7 @@ function Board(props){
                             DragOver={DragOver}
                             DragDrop={DragDrop} 
                             DragEnd={DragEnd}
+                            HandleCardOver={props.HandleCardOver}
                         />
                         {/* Backrow,CheckZone, ClimaxZone */}
                         <div className="row justify-content-center">
