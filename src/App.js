@@ -1,6 +1,7 @@
 import React,{useState} from 'react'
 import Board from './component/Board'
 import CardInfo from './component/CardInfo'
+import Register from './component/Register'
 // import Child from './component/Child'
 // import Root from './component/Root'
 // import {useSelector,useDispatch} from 'react-redux'
@@ -77,8 +78,8 @@ function App() {
   }
 
   return (
-    <div className="container-fluid" style={playerName !== "" ? style.background : style.NotLogin}>
-      {/* {(playerName !== "" && playerDeck.length > 0) ?  
+    <div className="container-fluid" style={playerName !== "" ? style.background : {}}>
+      {(playerName !== "" && playerDeck.length > 0) ?  
         <div className="row">
           <CardInfo
             image={CardInfoImage}
@@ -91,8 +92,11 @@ function App() {
             HandleCardOver={HandleCardOver}
           />
         </div> : ""
-      }*/}
-      {playerName === "" ? <LogIn SetplayerName={HandleplayerSubmitted}/> : ""} 
+      }
+      {playerName === "" && 
+        <LogIn SetplayerName={HandleplayerSubmitted}/>
+      } 
+      {/* <Register/> */}
     </div>
   )
 }
