@@ -3,7 +3,7 @@ import React from 'react'
 function Register(){
     return(
         <div className="row justify-content-center" style={{alignItems: 'center'}}>
-            <div className="col-lg-4 col-md-6 col-sm-12 shadow-lg bg-white rounded ">
+            <div className="col-lg-4 col-md-6 col-sm-12">
                 <h1 className="ms-5">Register</h1>
                 <div className="mb-3 mt-3 ms-5 me-5">
                     <label htmlFor="email" className="form-label">email</label>

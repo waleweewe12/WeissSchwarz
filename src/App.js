@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import Board from './component/Board'
 import CardInfo from './component/CardInfo'
 import Register from './component/Register'
@@ -77,9 +77,25 @@ function App() {
       }
   }
 
+  useEffect(()=>{
+    axios.post('http://localhost:5000/weissschwarz-f48e0/us-central1/app/signIn/auth', {}, {
+      headers:{
+        Authorization: 'Bearer ' + localStorage.getItem('token')  
+      }
+    }).then((response) => {
+      console.log(response.data);
+      if(response.data.status === 'success'){
+        HandleplayerSubmitted(response.data.username);
+      }
+    }).catch((error) => {
+      console.log(error);
+      throw error;
+    })
+  },[]);
+
   return (
     <div className="container-fluid" style={playerName !== "" ? style.background : {}}>
-      {(playerName !== "" && playerDeck.length > 0) ?  
+      {(playerName !== "" && playerDeck.length > 0)  &&  
         <div className="row">
           <CardInfo
             image={CardInfoImage}
@@ -91,7 +107,7 @@ function App() {
             playerCardtext={playerCardtext}
             HandleCardOver={HandleCardOver}
           />
-        </div> : ""
+        </div>
       }
       {playerName === "" && 
         <LogIn SetplayerName={HandleplayerSubmitted}/>
