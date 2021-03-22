@@ -41,9 +41,7 @@ function LogIn(props){
             </div>
             {/* form */}
             <div className="row ms-2 me-2 justify-content-center">
-                <div 
-                    className="col-lg-4 col-md-6 col-sm-12 mt-5 shadow-lg bg-white rounded" 
-                >
+                <div className="col-lg-4 col-md-6 col-sm-12 mt-5 shadow-lg bg-white rounded" >
                     <div className="mb-3 mt-3 ms-5 me-5">
                         <label htmlFor="username" className="form-label">username</label>
                         <input 
