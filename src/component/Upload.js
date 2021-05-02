@@ -108,6 +108,24 @@ function Upload() {
     const ClearAll = (e)=>{
         window.location.reload()
     }
+
+    // const updateCard = async (e) => {
+    //     // const storageRef = firebase.storage().ref('card/')
+    //     const db = firebase.firestore();
+    //     try {
+    //         let response = await axios.get('http://localhost:5000/weissschwarz-f48e0/us-central1/app/card/getCardId');
+    //         let cards = response.data;
+    //         cards = cards.cardIds;
+    //         cards.forEach(async(card) => {
+    //             let url = await firebase.storage().ref('card/' + card.series + '/' + card.cardName).getDownloadURL();
+    //             await db.collection('card').doc(card.id).update({ cardUrl:url });
+    //         });
+    //     } catch (error) {
+    //         console.log(error);
+    //         throw error;
+    //     }
+    // }
+
     return(
         <div className="container">
             <div className="row justify-content-center">
@@ -212,6 +230,9 @@ function Upload() {
                         <button className="btn btn-primary" type="submit" onClick={submit}>Submit</button>
                         <button className="btn btn-danger" onClick={ClearAll}>Clear All!</button>
                     </div>
+                    {/* <div className="mb-3">
+                        <button className="btn btn-info" type="button" onClick={updateCard}>Update</button>
+                    </div> */}
                 </div>
             </div>
         </div>

@@ -51,16 +51,16 @@ function Profile(){
         <Router>
             <ul className="nav nav-tabs">
                 <li className="nav-item">
-                    <Link to="/MyDeck">My Deck</Link>
+                    <Link className="nav-link active" to="/MyDeck">My Deck</Link>
                 </li>
                 <li className="nav-item">
-                    <Link to="/NewDeck">+ New Deck</Link>
+                    <Link className="nav-link" to="/NewDeck">+ New Deck</Link>
                 </li>
                 <li className="nav-item">
-                    <Link to="/Friend">Friend</Link>
+                    <Link className="nav-link" to="/Friend">Friend</Link>
                 </li>
                 <li className="nav-item">
-                    <Link to="/Invited">Invited</Link>
+                    <Link className="nav-link" to="/Invited">Invited</Link>
                 </li>
             </ul>
             

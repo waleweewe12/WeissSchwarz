@@ -5,6 +5,7 @@ import LogIn from './component/LogIn';
 import axios from 'axios';
 import firebase from './firebase';
 import Profile from './component/Profile';
+import Upload from './component/Upload';
 
 function App() {
 
@@ -110,7 +111,9 @@ function App() {
           <LogIn SetplayerName={HandleplayerSubmitted}/>
         </>
       } 
+
       {/* <Register/> */}
+      {/* <Upload/> */}
     </div>
   )
 }
