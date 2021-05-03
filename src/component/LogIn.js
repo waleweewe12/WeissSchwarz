@@ -1,5 +1,6 @@
 import React,{useState} from 'react';
 import axios from 'axios';
+import { Link } from "react-router-dom";
 
 function LogIn(props){
 
@@ -105,7 +106,7 @@ function LogIn(props){
                             cursor:'pointer'
                         }}
                     >
-                        {' '}สม้ครสมาชิก
+                        {' '}<Link to="/register">สม้ครสมาชิก</Link>
                     </span>
                 </div>
             </div>

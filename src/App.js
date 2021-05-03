@@ -6,6 +6,13 @@ import axios from 'axios';
 import firebase from './firebase';
 import Profile from './component/Profile';
 import Upload from './component/Upload';
+import Register from './component/Register';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 function App() {
 
@@ -103,16 +110,16 @@ function App() {
           />
         </div>
       } */}
-      {playerName !== '' &&
-        <Profile />
-      }
-      {playerName === '' && 
-        <>
-          <LogIn SetplayerName={HandleplayerSubmitted}/>
-        </>
-      } 
-
-      {/* <Register/> */}
+      <Router>
+        <Switch>
+          {playerName !== '' ? <Route path="/" exact component={Profile}/> :
+            <Route path="/" exact>
+              <LogIn SetplayerName={HandleplayerSubmitted}/>
+            </Route>
+          }
+          <Route path="/register" exact component={Register}/>
+        </Switch>
+      </Router>
       {/* <Upload/> */}
     </div>
   )
