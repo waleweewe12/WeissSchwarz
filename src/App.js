@@ -7,6 +7,7 @@ import firebase from './firebase';
 import Profile from './component/Profile';
 import Upload from './component/Upload';
 import Register from './component/Register';
+import RegisterStatus from './component/RegisterStatus';
 import {
   BrowserRouter as Router,
   Switch,
@@ -118,6 +119,7 @@ function App() {
             </Route>
           }
           <Route path="/register" exact component={Register}/>
+          <Route path="/register/:status" exact component={RegisterStatus}/>
         </Switch>
       </Router>
       {/* <Upload/> */}

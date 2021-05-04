@@ -25,6 +25,10 @@ function Register(){
     }
 
     const handleSubmitClicked = async () =>{
+        //Waiting backend response
+        setModalHeader('กำลังดำเนินการ');
+        setModalMessage('กำลังดำเนินการ กรุณารอซักครู่');
+        setModal(true);
         const apiPath = 'http://localhost:5000/weissschwarz-f48e0/us-central1/app/register';
         try {
             let response = await axios.post(apiPath, {
@@ -33,14 +37,16 @@ function Register(){
                 password
             })
             console.log(response.data);
-            setModal(true);
             if(response.data.status === 'success'){
                 setModalHeader('Success');
-                setModalMessage('สมัครสมาชิกสำเร็จ');
+                setModalMessage('ดำเนินการเสร็จสิ้น กรุณาตรวจสอบ email เพื่อทำการยืนยันตัวตนก่อนเข้าสู่ระบบ');
             }else{
                 setModalHeader('Fail');
                 setModalMessage(response.data.message);
             }
+            //reload Modal
+            setModal(false);
+            setModal(true);
         } catch (error) {
             console.log(error);
             throw error;
@@ -113,13 +119,13 @@ function Register(){
                 </Modal.Header>
                 <Modal.Body>{modalMessage}</Modal.Body>
                 <Modal.Footer>
-                {modalHeader === 'Success' &&
+                {/* {modalHeader === 'Success' &&
                     <Link to='/'>
                         <Button variant="primary">
                             เข้าสู่ระบบ
                         </Button>
                     </Link> 
-                }
+                } */}
                 <Button variant="secondary" onClick={handleModalCloseClicked}>
                     Close
                 </Button>
