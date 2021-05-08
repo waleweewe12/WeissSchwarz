@@ -1,6 +1,7 @@
 import React,{useState} from 'react';
 import axios from 'axios';
 import { Link } from "react-router-dom";
+import ResetPassword from './ResetPassword';
 
 function LogIn(props){
 
@@ -93,19 +94,11 @@ function LogIn(props){
                         marginTop:'15px'
                     }}
                 >
-                    <span
-                        style={{
-                            cursor:'pointer'
-                        }} 
-                        onClick={() => {console.log('hello')}}
-                    >
-                        ลืมรหัสผ่าน ?
-                    </span> | 
-                    <span
-                        style={{
-                            cursor:'pointer'
-                        }}
-                    >
+                    <span style={{cursor:'pointer'}} >
+                        <Link to="/resetpassword"> ลืมรหัสผ่าน ? </Link>
+                    </span> 
+                    |
+                    <span style={{cursor:'pointer'}}>
                         {' '}<Link to="/register">สม้ครสมาชิก</Link>
                     </span>
                 </div>

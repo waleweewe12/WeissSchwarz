@@ -4,7 +4,6 @@ import { Button } from 'react-bootstrap';
 
 function RegisterStatus(){
     const { status } = useParams();
-    console.log(status);
     return(
         <>
         {status === 'fail' &&

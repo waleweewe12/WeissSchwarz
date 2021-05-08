@@ -8,6 +8,8 @@ import Profile from './component/Profile';
 import Upload from './component/Upload';
 import Register from './component/Register';
 import RegisterStatus from './component/RegisterStatus';
+import ResetPassword from './component/ResetPassword';
+import ResetPasswordStatus from './component/ResetPasswordStatus';
 import {
   BrowserRouter as Router,
   Switch,
@@ -120,6 +122,9 @@ function App() {
           }
           <Route path="/register" exact component={Register}/>
           <Route path="/register/:status" exact component={RegisterStatus}/>
+          <Route path="/resetpassword" exact component={ResetPassword}/>
+          <Route path="/resetpassword/:status/" exact component={ResetPasswordStatus}/>
+          <Route path="/resetpassword/:status/:id" component={ResetPasswordStatus}/>
         </Switch>
       </Router>
       {/* <Upload/> */}
