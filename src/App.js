@@ -115,7 +115,7 @@ function App() {
       } */}
       <Router>
         <Switch>
-          {playerName !== '' ? <Route path="/" exact component={Profile}/> :
+          {playerName !== '' ? <Route path="/" component={Profile}/> :
             <Route path="/" exact>
               <LogIn SetplayerName={HandleplayerSubmitted}/>
             </Route>
