@@ -66,43 +66,66 @@ function Upload() {
 
     const submit=(e)=>{
         e.preventDefault()
-        const storageRef = firebase.storage().ref('card/'+series+'/'+name)
-        const task = storageRef.put(image)
-        SetUploadSuccess(false)
+        const storageRef = firebase.storage().ref('card/'+series+'/'+name);
+        SetUploadSuccess(false);
+        const task = storageRef.put(image);
         task.on('state_changed', function(snapshot){
-            let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-            SetUploagProgress(progress)
-          }, function(error) {
-            console.log(error)
-          }, function() {
+            let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            SetUploagProgress(progress);
+        }, function(error) {
+            console.log(error);
+            throw error;
+        }, function() {
+            //upload success
             SetUploagProgress(0)
             SetUploadSuccess(true)
-          })
-
-        let CardData = {
-            series,
-            name,
-            level,
-            text,
-            cost,
-            counter,
-            trigger,
-            color,
-            power,
-            soul,
-            CharacterType,
-            CardType,
-            CardId
-        }
-
-        axios.post('http://localhost:5000/weissschwarz-f48e0/us-central1/app/card/addCard',CardData)
-        .then(response => console.log(response))
-        .catch(err => console.log(err))
+            //save card data in firestore
+            let CardData = {
+                series,
+                name,
+                level,
+                text,
+                cost,
+                counter,
+                trigger,
+                color,
+                power,
+                soul,
+                CharacterType,
+                CardType,
+                CardId
+            };
+            axios.post('http://localhost:5000/weissschwarz-f48e0/us-central1/app/card/addCard',CardData)
+            .then((response) => {
+                console.log(response)
+            })
+            .catch((err) => {
+                console.log(err)
+            });
+        })
     }
 
     const ClearAll = (e)=>{
         window.location.reload()
     }
+
+    // const updateCard = async (e) => {
+    //     // const storageRef = firebase.storage().ref('card/')
+    //     const db = firebase.firestore();
+    //     try {
+    //         let response = await axios.get('http://localhost:5000/weissschwarz-f48e0/us-central1/app/card/getCardId');
+    //         let cards = response.data;
+    //         cards = cards.cardIds;
+    //         cards.forEach(async(card) => {
+    //             let url = await firebase.storage().ref('card/' + card.series + '/' + card.cardName).getDownloadURL();
+    //             await db.collection('card').doc(card.id).update({ cardUrl:url });
+    //         });
+    //     } catch (error) {
+    //         console.log(error);
+    //         throw error;
+    //     }
+    // }
+
     return(
         <div className="container">
             <div className="row justify-content-center">
@@ -112,6 +135,7 @@ function Upload() {
                         <select className="form-select" id="series" onChange={HandleseriesSelected}>
                             <option value="Konosuba">Konosuba</option>
                             <option value="Slime">Slime</option>
+                            <option value="Aobuta">Aobuta</option>
                         </select>
                     </div>
                     <div className="mb-3">
@@ -206,6 +230,9 @@ function Upload() {
                         <button className="btn btn-primary" type="submit" onClick={submit}>Submit</button>
                         <button className="btn btn-danger" onClick={ClearAll}>Clear All!</button>
                     </div>
+                    {/* <div className="mb-3">
+                        <button className="btn btn-info" type="button" onClick={updateCard}>Update</button>
+                    </div> */}
                 </div>
             </div>
         </div>

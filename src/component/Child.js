@@ -3,11 +3,12 @@ import React from 'react'
 function Child(props){
 
     const HandleInputChange = (e) =>{
-        props.Setdata(e.target.value)
+        let data = ['hello','world']
+        props.Setdata(data)
     }
     return(
         <div>
-            <input type='text' onChange={HandleInputChange}/>
+            <button onClick={HandleInputChange}>click me</button>
         </div>
     )
 }

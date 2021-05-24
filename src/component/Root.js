@@ -9,14 +9,11 @@ function Root(){
         dummy.push(Childdata)
         Setdata(dummy)
     }
-
-    useEffect(() => {
-        console.log('data update')
-    }, [data])
-
     return(
         <div>
-            {/* {data} */}
+            {data.map((item,i)=>
+                <div key={i}>{item}</div>
+            )}
             <Child Setdata={HandledataChange}/>
         </div>
     )
