@@ -6,9 +6,11 @@ import {
     Switch,
     Route,
     Redirect
-
 } from 'react-router-dom';
 import ViewDeck from './ViewDeck';
+import NewDeck from './NewDeck';
+import Navbar from './Navbar';
+import ViewCard from './ViewCard';
 
 function Profile(){
 
@@ -49,24 +51,10 @@ function Profile(){
     return(
         <>
         <Router>
-            <ul className="nav nav-tabs">
-                <li className="nav-item">
-                    <Link className="nav-link active" to="/MyDeck">My Deck</Link>
-                </li>
-                <li className="nav-item">
-                    <Link className="nav-link" to="/NewDeck">+ New Deck</Link>
-                </li>
-                <li className="nav-item">
-                    <Link className="nav-link" to="/Friend">Friend</Link>
-                </li>
-                <li className="nav-item">
-                    <Link className="nav-link" to="/Invited">Invited</Link>
-                </li>
-            </ul>
-            
+            <Navbar/>
             <Switch>
                 <Route exact path="/">
-                    <Redirect to="/Mydeck" />
+                    <Redirect to="/MyDeck" />
                 </Route>
                 <Route exact path="/MyDeck">
                     <div 
@@ -86,7 +74,7 @@ function Profile(){
                             >
                                 <img src={item.DeckImage} alt="..."/>
                                 <p style={{textAlign:'center'}}>{item.DeckName}</p>
-                                <Link to={"/Mydeck/" + item.DeckId}>
+                                <Link to={"/MyDeck/" + item.DeckId}>
                                     <button 
                                         type="button" 
                                         className="btn btn-primary"
@@ -105,14 +93,17 @@ function Profile(){
                 <Route exact path="/MyDeck/:deckId">
                     <ViewDeck viewDeck={viewDeck}/>
                 </Route>
-                <Route path="/NewDeck">
-                    <p>New Deck</p>
+                <Route exact path="/NewDeck">
+                    <NewDeck />
+                </Route>
+                <Route path="/NewDeck/:series">
+                    <ViewCard />
                 </Route>
                 <Route path="/Friend">
                     <p>Friend</p>
                 </Route>
                 <Route path="/Invited">
-                    <p>Invired</p>
+                    <p>Invited</p>
                 </Route>
             </Switch>
         </Router>

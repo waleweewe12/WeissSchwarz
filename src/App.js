@@ -98,21 +98,7 @@ function App() {
   },[]);
 
   return (
-    <div className="container-fluid">
-      {/* {(playerName !== "" && playerDeck.length > 0)  &&  
-        <div className="row">
-          <CardInfo
-            image={CardInfoImage}
-            text={playerCardtext}
-          />
-          <Board 
-            playerDeck={playerDeck} 
-            playerName={playerName}
-            playerCardtext={playerCardtext}
-            HandleCardOver={HandleCardOver}
-          />
-        </div>
-      } */}
+    <>
       <Router>
         <Switch>
           {playerName !== '' ? <Route path="/" component={Profile}/> :
@@ -127,8 +113,7 @@ function App() {
           <Route path="/resetpassword/:status/:id" component={ResetPasswordStatus}/>
         </Switch>
       </Router>
-      {/* <Upload/> */}
-    </div>
+    </>
   )
 }
 
